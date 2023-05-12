@@ -10,7 +10,7 @@ const anu = {
                         },
        message: {
                     "documentMessage": {
-                    "title": 'elaina.jpeg', 
+                    "title": 'Ikratos.jpeg', 
                     "jpegThumbnail": fs.readFileSync('./thumbnail.jpg')
                           }
                         }
@@ -22,7 +22,7 @@ conn.sendMessage(m.chat,{ text: wm}, { quoted: anu })
 
 handler.help = ['doc']
 
-handler.tags = ['ᴘᴇɴᴅɪɴɢ sᴛᴜғғ']
+handler.tags = ['nocategory']
 
 handler.command = /^doc$/i
 handler.owner = false

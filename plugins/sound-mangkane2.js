@@ -8,20 +8,20 @@ global.fkontak = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.
 
 //m.reply(`Wait ${command} sedang proses🐦`)
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
+let zykomd = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
 let name = await conn.getName(who)
 
 let stiker = await sticker(null, global.API(`https://telegra.ph/file/d34b2ab2cb233c749776c.png`), global.packname, global.author)
  conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, null, { fileLength: 100, contextInfo: {
           externalAdReply :{
           showAdAttribution: true,
-    mediaUrl: sgc,
-    mediaType: 2,
-    description: 'PutraModz', 
+    mediaUrl: tautanwa,
+    mediaType: tautanwa,
+    description: 'tautanwa', 
     title: `${command} Sedang Di Proses`,
     body: botdate,
-    thumbnail: await(await fetch(pp)).buffer(),
-    sourceUrl: sgc
+    thumbnail: await(await fetch(zykomd)).buffer(),
+    sourceUrl: syt
      }}
   })
   
@@ -31,13 +31,13 @@ await conn.sendFile(m.chat, audio, 'error.mp3', null, fkontak, true, {
 type: 'audioMessage', 
 ptt: false, seconds: 0,contextInfo: {
          externalAdReply: { showAdAttribution: true,
- mediaUrl: 'www.instagram.com/l4c1f2r',
+ mediaUrl: 'www.instagram.com/kabulsaputra21',
     mediaType: 2, 
-    description: 'www.instagram.com/l4c1f2r',
+    description: 'www.instagram.com/kabulsaputra21',
     title: "Now Playing...",
     body: wm,
-    thumbnail: await (await fetch('https://telegra.ph/file/1724ef4fc41842c87f082.jpg')).buffer(),
-    sourceUrl: 'www.instagram.com/l4c1f2r'
+    thumbnail: await (await fetch('https://telegra.ph/file/ad5117fee03548df17ca6.jpg')).buffer(),
+    sourceUrl: 'www.instagram.com/kabulsaputra21'
  	  /*   sourceUrl: sig,
            title: '◄⟬ ●━━━ ⧏ ⧎ ⧐ ━━━● ⟭►',  
             body: 'Now Playing...', 
@@ -48,7 +48,7 @@ ptt: false, seconds: 0,contextInfo: {
 }
 
 handler.help = ['mangkane25','mangkane26','mangkane27','mangkane28','mangkane29','mangkane30','mangkane31','mangkane32','mangkane33','mangkane34','mangkane35','mangkane36','mangkane37','mangkane38','mangkane39','mangkane40','mangkane41','mangkane42','mangkane43','mangkane44','mangkane45','mangkane46','mangkane47','mangkane48','mangkane49','mangkane50','mangkane51','mangkane52','mangkane53','mangkane54']
-handler.tags = ['sound2004']
+handler.tags = ['sound']
 handler.command = /^(mangkane25|mangkane26|mangkane27|mangkane28|mangkane29|mangkane30|mangkane31|mangkane32|mangkane33|mangkane34|mangkane35|mangkane36|mangkane37|mangkane38|mangkane39|mangkane40|mangkane41|mangkane42|mangkane43|mangkane44|mangkane45|mangkane46|mangkane47|mangkane48|mangkane49|mangkane50|mangkane51|mangkane52|mangkane53|mangkane54)$/i
 handler.owner = false
 export default handler

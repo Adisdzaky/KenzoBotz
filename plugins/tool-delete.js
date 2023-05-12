@@ -1,16 +1,20 @@
-let handler = async (m, { conn, command }) => {
-if (!m.quoted) throw 'Reply pesan yang ingin dihapus'
-try {
-let bilek = m.message.extendedTextMessage.contextInfo.participant
-let banh = m.message.extendedTextMessage.contextInfo.stanzaId
-return conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: banh, participant: bilek }})
- } catch {
-return conn.sendMessage(m.chat, { delete: m.quoted.vM.key })
-}
-}
-handler.help = ['del', 'delete']
-handler.tags = ['tools']
 
-handler.command = /^del(ete)?$/i
+let handler = function (m) {
+ let key = {}
+ try {
+ 	key.remoteJid = m.quoted ? m.quoted.fakeObj.key.remoteJid : m.key.remoteJid
+	key.fromMe = m.quoted ? m.quoted.fakeObj.key.fromMe : m.key.fromMe
+	key.id = m.quoted ? m.quoted.fakeObj.key.id : m.key.id
+ 	key.participant = m.quoted ? m.quoted.fakeObj.participant : m.key.participant
+ } catch (e) {
+ 	console.error(e)
+ }
+ conn.sendMessage(m.chat, { delete: key })
+}
+handler.help = ['delete']
+handler.tags = ['info']
+handler.command = /^(del|delete|unsend?)$/i
+handler.limit = false
+handler.admin = true
 
 export default handler

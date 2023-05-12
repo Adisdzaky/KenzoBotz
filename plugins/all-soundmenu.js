@@ -1,28 +1,14 @@
 let { MessageType } = (await import('@adiwajshing/baileys')).default
-
+import moment from 'moment-timezone'
 let handler  = async (m, { conn, command, args, usedPrefix, DevMode }) => {
   let type = (args[0] || '').toLowerCase()
   let _type = (args[0] || '').toLowerCase()
 
-//------- NOMOR
-  let nowner = `${nomorown.split`@`[0]}@s.whatsapp.net`
-  let teksnomor = `${htki} *OWNER* ${htka}
-✦ @${nomorown.split`@`[0]} ✦
-------- ${nameown} -------
-
-📮 *Note:*
-• Owner tidak menerima save contact
-• Owner berhak blockir tanpa alasan
-• Berbicaralah yang sopan & tidak spam
-• Owner Hanya merespon yang berkaitan dengan BOT
-• No Telp`
-
-  let teks = 'Pilih dibawah kak ! o(〃＾▽＾〃)o'
+  let teks = `【 ʟɪsᴛ sᴏᴜɴᴅ ᴍᴇɴᴜ 】`
 const sections = [
    {
 	title: `${htjava} SOUND MENU –––––––––·•`,
 	rows: [
-    {title: "Sound Ultah", rowId: ".NexBotz"},
 	{title: "Sound 1", rowId: ".sound1"},
     {title: "Sound 2", rowId: ".sound2"},
 	{title: "Sound 3", rowId: ".sound3"},
@@ -141,70 +127,62 @@ const sections = [
 	{title: "Sound 116", rowId: ".sound116"},
 	{title: "Sound 117", rowId: ".sound117"},
 	{title: "Sound 118", rowId: ".sound118"},
-	{title: "Sound 119", rowId: ".sound119"}
+	{title: "Sound 119", rowId: ".sound119"},
 ]
     },{
-	title: `${htjava} SOUND KANE –––––––·•`,
+	title: `${htjava} Mangkane Menu –––––––·•`,
 	rows: [
-	{title: "Mangkane 1", rowId: ".mangkane1"},
-    {title: "Mangkane 2", rowId: ".mangkane2"},
-	{title: "Mangkane 3", rowId: ".mangkane3"},
-	{title: "Mangkane 4", rowId: ".mangkane4"},
-	{title: "Mangkane 5", rowId: ".mangkane5"},
-	{title: "Mangkane 6", rowId: ".mangkane6"},
-	{title: "Mangkane 7", rowId: ".mangkane7"},
-	{title: "Mangkane 8", rowId: ".mangkane8"},
-	{title: "Mangkane 9", rowId: ".mangkane9"},
-	{title: "Mangkane 10", rowId: ".mangkane10"},
-	{title: "Mangkane 11", rowId: ".mangkane11"},
-	{title: "Mangkane 12", rowId: ".mangkane12"},
-	{title: "Mangkane 13", rowId: ".mangkane13"},
-	{title: "Mangkane 14", rowId: ".mangkane14"},
-	{title: "Mangkane 15", rowId: ".mangkane15"},
-	{title: "Mangkane 16", rowId: ".mangkane16"},
-	{title: "Mangkane 17", rowId: ".mangkane17"},
-	{title: "Mangkane 18", rowId: ".mangkane18"},
-	{title: "Mangkane 19", rowId: ".mangkane19"},
-    {title: "Mangkane 20", rowId: ".mangkane20"},
-	{title: "Mangkane 21", rowId: ".mangkane21"},
-    {title: "Mangkane 22", rowId: ".mangkane22"},
-	{title: "Mangkane 23", rowId: ".mangkane23"},
-	{title: "Mangkane 24", rowId: ".mangkane24"},
-	{title: "Mangkane 25", rowId: ".mangkane25"},
-    {title: "Mangkane 26", rowId: ".mangkane26"},
-	{title: "Mangkane 27", rowId: ".mangkane27"},
-	{title: "Mangkane 28", rowId: ".mangkane28"},
-	{title: "Mangkane 29", rowId: ".mangkane29"},
-	{title: "Mangkane 30", rowId: ".mangkane30"},
-	{title: "Mangkane 31", rowId: ".mangkane31"},
-	{title: "Mangkane 32", rowId: ".mangkane32"},
-	{title: "Mangkane 33", rowId: ".mangkane33"},
-	{title: "Mangkane 34", rowId: ".mangkane34"},
-	{title: "Mangkane 35", rowId: ".mangkane35"},
-	{title: "Mangkane 36", rowId: ".mangkane36"},
-	{title: "Mangkane 37", rowId: ".mangkane37"},
-	{title: "Mangkane 38", rowId: ".mangkane38"},
-	{title: "Mangkane 39", rowId: ".mangkane39"},
-	{title: "Mangkane 40", rowId: ".mangkane40"},
-	{title: "Mangkane 41", rowId: ".mangkane41"},
-	{title: "Mangkane 42", rowId: ".mangkane42"},
-	{title: "Mangkane 43", rowId: ".mangkane43"},
-    {title: "Mangkane 44", rowId: ".mangkane44"},
-	{title: "Mangkane 45", rowId: ".mangkane45"},
-    {title: "Mangkane 46", rowId: ".mangkane46"},
-	{title: "Mangkane 47", rowId: ".mangkane47"},
-	{title: "Mangkane 48", rowId: ".mangkane48"},
-	{title: "Mangkane 49", rowId: ".mangkane49"},
-	{title: "Mangkane 50", rowId: ".mangkane50"},
-	{title: "Mangkane 51", rowId: ".mangkane51"},
-	{title: "Mangkane 52", rowId: ".mangkane52"},
-	{title: "Mangkane 53", rowId: ".mangkane53"},
-	{title: "Mangkane 54", rowId: ".mangkane54"},
-]
-    },{
+	{title: "Mangkane1", rowId: ".mangkane1"},
+    {title: "Mangkane2", rowId: ".mangkane2"},
+    {title: "Mangkane3", rowId: ".mangkane3"},
+    {title: "Mangkane4", rowId: ".mangkane4"},
+    {title: "Mangkane5", rowId: ".mangkane5"},
+    {title: "Mangkane6", rowId: ".mangkane6"},
+    {title: "Mangkane7", rowId: ".mangkane7"},
+    {title: "Mangkane8", rowId: ".mangkane8"},
+    {title: "Mangkane9", rowId: ".mangkane9"},
+    {title: "Mangkane10", rowId: ".mangkane10"},
+    {title: "Mangkane11", rowId: ".mangkane11"},
+    {title: "Mangkane12", rowId: ".mangkane12"},
+    {title: "Mangkane13", rowId: ".mangkane13"},
+    {title: "Mangkane14", rowId: ".mangkane14"},
+    {title: "Mangkane15", rowId: ".mangkane15"},
+    {title: "Mangkane16", rowId: ".mangkane16"},
+    {title: "Mangkane17", rowId: ".mangkane17"},
+    {title: "Mangkane18", rowId: ".mangkane18"},
+    {title: "Mangkane19", rowId: ".mangkane19"},
+    {title: "Mangkane20", rowId: ".mangkane20"},
+    {title: "Mangkane21", rowId: ".mangkane21"},
+    {title: "Mangkane22", rowId: ".mangkane22"},
+    {title: "Mangkane23", rowId: ".mangkane23"},
+    {title: "Mangkane24", rowId: ".mangkane24"},
+    {title: "Mangkane25", rowId: ".mangkane25"},
+    {title: "Mangkane26", rowId: ".mangkane26"},
+    {title: "Mangkane27", rowId: ".mangkane27"},
+    {title: "Mangkane28", rowId: ".mangkane28"},
+    {title: "Mangkane29", rowId: ".mangkane29"},
+    {title: "Mangkane30", rowId: ".mangkane30"},
+    {title: "Mangkane31", rowId: ".mangkane31"},
+    {title: "Mangkane32", rowId: ".mangkane32"},
+    {title: "Mangkane33", rowId: ".mangkane33"},
+    {title: "Mangkane34", rowId: ".mangkane34"},
+    {title: "Mangkane35", rowId: ".mangkane35"},
+    {title: "Mangkane36", rowId: ".mangkane36"},
+    {title: "Mangkane37", rowId: ".mangkane37"},
+    {title: "Mangkane38", rowId: ".mangkane38"},
+    {title: "Mangkane39", rowId: ".mangkane39"},
+    {title: "Mangkane40", rowId: ".mangkane40"},
+    {title: "Mangkane41", rowId: ".mangkane41"},
+    {title: "Mangkane42", rowId: ".mangkane42"},
+    {title: "Mangkane43", rowId: ".mangkane43"},
+    {title: "Mangkane44", rowId: ".mangkane44"},
+
+	
+	]
+  },{
 	title: `${htjava} SUPPORT ME –––––––·•`,
 	rows: [
-	    {title: "💹 • Donasi", rowId: ".donasi"},
+	    {title: "💹 • Donasi", rowId: ".owner nomor"},
 	{title: "🔖 • Sewa", rowId: ".sewa"},
 	{title: "🌟 • Buy Premium", rowId: ".premium"},
 	]
@@ -212,43 +190,18 @@ const sections = [
 ]
 
 const listMessage = {
-  text: teks,
-  footer: null,
-  title: `${htki} *SOUND MENU* ${htka}`,
-  buttonText: "Click Here !",
+  text: ` `,
+  footer: teks,
+  title: 'ᴄʟɪᴄᴋ ʙᴜᴛᴛᴏɴ ɴᴏᴡ!',
+  buttonText: "Pʟᴀʏɪɴɢ Nᴏᴡ...",
   sections
 }
-
-  try {
-    if (/(soundmenu)/i.test(command)) {
-      const count = args[1] && args[1].length > 0 ? Math.min(99999999, Math.max(parseInt(args[1]), 1)) : !args[1] || args.length < 3 ? 1 : Math.min(1, count)
-        switch (type) {
-          case 'nomor':
-          conn.reply(m.chat, teksnomor, m, { contextInfo: { mentionedJid: [nowner] }})
-            break
-          default:
-            return await conn.sendMessage(m.chat, listMessage, { quoted: ftroli, mentions: await conn.parseMention(teks), contextInfo:{ forwardingScore: 99999, isForwarded: true }})
-        }
-    } else if (/enchant|enchan/i.test(command)) {
-      const count = args[2] && args[2].length > 0 ? Math.min(99999999, Math.max(parseInt(args[2]), 1)) : !args[2] || args.length < 4 ? 1 :Math.min(1, count)
-      switch (_type) {
-        case 't':
-          break
-        case '':
-          break
-
-        default:
-          return conn.sendButton( m.chat, caption, wm, null, [`⋮☰ Menu`, `.menu`], m)
-      }
-    }
-  } catch (err) {
-    m.reply("Error\n\n\n" + err.stack)
-  }
+await conn.sendMessage(m.chat, listMessage, { quoted: fkontak, mentions: await conn.parseMention(teks), contextInfo:{ forwardingScore: 99999, isForwarded: true }})
 }
 
 handler.help = ['soundmenu']
-handler.tags = ['fun']
+handler.tags = ['sound']
 handler.command = /^(soundmenu)/i
-
+handler.register = true
 
 export default handler

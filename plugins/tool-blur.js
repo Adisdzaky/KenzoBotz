@@ -1,6 +1,7 @@
 import jimp from 'jimp'
 
 let handler = async (m, { conn, text }) => {
+await m.reply(`*_${md} @${m.sender.split(`@`)[0]}..._*`)
 	let image = m.message?.imageMessage
 		? await m.download()
 			: /image/.test(m.quoted?.mediaType)
@@ -12,10 +13,12 @@ let handler = async (m, { conn, text }) => {
 	let level = text || '5', img = await jimp.read(image)
 	img.blur(isNaN(level) ? 5 : parseInt(level))
 	img.getBuffer('image/jpeg', (err, buffer) => {
-		if (err) throw err?.message || `Tidak dapat memblur gambar`
+		if (err) throw err?.message || `Couldn't blur the image`
 		m.reply(buffer)
 	})
 }
+handler.help = ['blur']
+handler.tags = ['tools']
 handler.command = /^(blur)$/i
 
 export default handler

@@ -13,12 +13,13 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
         at: + new Date,
         locked: false,
     }
-    m.reply(`Success!`)
+    m.reply(`Berhasil!`)
 }
 
 
 handler.help = ['cmd'].map(v => 'set' + v + ' <teks>')
-handler.tags = ['database']
+handler.tags = ['database', 'premium']
 handler.command = ['setcmd']
+handler.premium = true
 
 export default handler

@@ -1,60 +1,63 @@
-import fetch from 'node-fetch'
 import { canLevelUp, xpRange } from '../lib/levelling.js'
-
-let handler = async (m, { conn, usedPrefix }) => {
-  // let pp = './src/avatar_contact.png'
-  let who = m.sender
-  let name = conn.getName(m.sender)
-  let discriminator = who.substring(9, 13)
-  let pp = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
-	try {
-		pp = await this.profilePictureUrl(m.sender, 'image')
-	} catch (e) {
-	} finally {
+import { levelup } from '../lib/canvas.js'
+import moment from 'moment-timezone'
+import fs from 'fs'
+import fetch from 'node-fetch'
+  import jimp from 'jimp'
+  
+let handler = async (m, { conn }) => {
     let user = global.db.data.users[m.sender]
-    let users = Object.entries(global.db.data.users).map(([key, value]) => {
-      return { ...value, jid: key }
-    })
-    let sortedLevel = users.map(toNumber('level')).sort(sort('level'))
-    let usersLevel = sortedLevel.map(enumGetKey)
-    let { min, xp, max } = xpRange(user.level, global.multiplier)
     if (!canLevelUp(user.level, user.exp, global.multiplier)) {
-      let rank = 'https://flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=birdy-logo&doScale=true&scaleWidth=800&scaleHeight=500&text=DIKIT%20LAGI%20NAIK'
-        {
-          await conn.sendButtonImg(m.chat, rank, `Level ${name} ${user.level} (${user.exp - min}/${xp})\nKurang ${max - user.exp} EXP lagi!`.trim(), wm, 'Enable autolevelup', `${usedPrefix}on autolevelup`, m)
-        }
+        let { min, xp, max } = xpRange(user.level, global.multiplier)
+        throw `
+Level ${user.level} 📊
+*${user.exp - min} / ${xp}*
+Kurang *${max - user.exp}* lagi! ✨
+`.trim()
     }
     let before = user.level * 1
     while (canLevelUp(user.level, user.exp, global.multiplier)) user.level++
+    
+    let pp = 'https://telegra.ph/file/712e80d59373d2dfe5cbe.jpg'
+    const vv = await conn.profilePictureUrl(m.sender, 'image').catch(() => 'https://telegra.ph/file/24fa902ead26340f3df2c.png')
+              
+    let hh = API('males', '/levelup', {
+                                pp: vv,
+                                })
     if (before !== user.level) {
-      let rank = 'https://telegra.ph/file/5acbd203b92c03cdde356.jpg'
-        {
-          await conn.sendButtonImg(m.chat, rank, `${name} Level Up!\n_${before}_ -> ${user.level}`.trim(), wm, 'AUTO LEVEL UP', `${usedPrefix}on autolevelup`)
-          //await conn.sendButtonLoc(m.chat, await (await fetch(rank)).buffer(), `${name} Level Up!\n_${before}_ -> ${user.level}`.trim(), wm, 'AUTO LEVEL UP', `${usedPrefix}on autolevelup`, m)
+        let teks = `.             ${user.role}`
+        let str = `
+*🎉 C O N G R A T S 🎉*
+*${before}* ➔ *${user.level}* [ *${user.role}* ]`.trim()
+        try {
+        const img = await levelup(teks, user.level)
+            conn.send3ButtonImg(m.chat, await(await fetch(hh)).buffer(), `Cᴏɴɢʀᴀᴛᴜʟᴀᴛɪᴏɴ, Aɴᴅᴀ Tᴇʟᴀʜ Nᴀɪᴋ Lᴇᴠᴇʟ!!\n⚙ Lᴇᴠᴇʟ : ${user.level}\n⚙ Rᴏʟᴇ : ${user.role}`, botdate, 'Menu', '.menu', 'Owner', '.owner', 'Credit', '.credit', m, { contextInfo: { externalAdReply: { showAdAttribution: true,
+    mediaUrl: 'https://facebook.com/sadtime098',
+    mediaType: 1, 
+    description: sgc,
+    title: "Jᴏɪɴ Sɪɴɪ Cᴜʏ",
+    body: wm,
+    thumbnail: await(await fetch(pp)).buffer(),
+    sourceUrl: sgc
+   }}})
+        } catch (e) {
+       /*     conn.sendButton(m.chat, str, botdate, [['INVENTORY', '.inv']], m)*/
+            conn.send3ButtonImg(m.chat, await(await fetch(hh)).buffer(), `Cᴏɴɢʀᴀᴛᴜʟᴀᴛɪᴏɴ, Aɴᴅᴀ Tᴇʟᴀʜ Nᴀɪᴋ Lᴇᴠᴇʟ!!`, botdate, 'Menu', '.menu', 'Owner', '.owner', 'Credit', '.credit', m, { contextInfo: { externalAdReply: { showAdAttribution: true,
+    mediaUrl: 'https://instagram.com/_b4c00t4an_s3l3b',
+    mediaType: 2, 
+    description: sgc,
+    title: "Jᴏɪɴ Sɪɴɪ Cᴜʏ",
+    body: wm,
+    thumbnail: await(await fetch(pp)).buffer(),
+    sourceUrl: sgc
+   }}})
         }
     }
-  }
 }
 
 handler.help = ['levelup']
 handler.tags = ['xp']
 
-handler.command = /^levelup$/i
+handler.command = /^level(|up)$/i
 
 export default handler
-
-function sort(property, ascending = true) {
-  if (property) return (...args) => args[ascending & 1][property] - args[!ascending & 1][property]
-  else return (...args) => args[ascending & 1] - args[!ascending & 1]
-}
-
-function toNumber(property, _default = 0) {
-  if (property) return (a, i, b) => {
-    return { ...b[i], [property]: a[property] === undefined ? _default : a[property] }
-  }
-  else return a => a === undefined ? _default : a
-}
-
-function enumGetKey(a) {
-  return a.jid
-}

@@ -1,66 +1,78 @@
-//Thanks Papah-Chan https://github.com/FahriAdison
-let { generateWAMessageFromContent } = (await import("@adiwajshing/baileys")).default 
-import { performance } from 'perf_hooks'
-import fs from 'fs'
-let handler  = async (m, { conn, usedPrefix: _p }) => {
+let { MessageType } = (await import('@adiwajshing/baileys')).default
 
-function kyun(seconds){
-  function pad(s){
-    return (s < 10 ? '0' : '') + s;
-  }
-  var days = Math.floor(seconds / (60 * 60 * 24));
-  var hours = Math.floor(seconds / (60*60));
-  var minutes = Math.floor(seconds % (60*60) / 60);
-  var seconds = Math.floor(seconds % 60);
+let handler  = async (m, { conn, command, args, usedPrefix, DevMode }) => {
+  let type = (args[0] || '').toLowerCase()
+  let _type = (args[0] || '').toLowerCase()
 
-  //return pad(hours) + ':' + pad(minutes) + ':' + pad(seconds)
-  return `\n\t\t*⏰ʀᴜɴᴛɪᴍᴇ「 \t${pad(days)}D\t ${pad(hours)}H ${pad(minutes)}M ${pad(seconds)}S \t」*\n`
+//------- NOMOR
+  let nowner = `${nomorown.split`@`[0]}@s.whatsapp.net`
+  let teksnomor = `${htki} *OWNER* ${htka}
+✦ @${nomorown.split`@`[0]} ✦
+------- ${nameown} -------
+
+📮 *Note:*
+• Owner tidak menerima save contact
+• Owner berhak blockir tanpa alasan
+• Berbicaralah yang sopan & tidak spam
+• Owner Hanya merespon yang berkaitan dengan BOT
+• No Telp`
+
+  let teks = 'Pilih Dibawah kak Model Runtime Nya ! o(〃＾▽＾〃)o'
+const sections = [
+   {
+	title: `${htjava} Runtime –––––––––·•`,
+	rows: [
+    {title: "Runtime V1", rowId: ".runtime1"},
+    {title: "Runtime V2", rowId: ".runtime2"},
+    ]
+    },{
+	title: `${htjava} SUPPORT ME –––––––·•`,
+	rows: [
+	    {title: "💹 • Donasi", rowId: ".owner nomor"},
+	{title: "🔖 • Sewa", rowId: ".sewa"},
+	{title: "🌟 • Buy Premium", rowId: ".premium"},
+	]
+  },
+]
+
+const listMessage = {
+  text: teks,
+  footer: null,
+  title: `${htki} *RUNTIME* ${htka}`,
+  buttonText: "Click Here !",
+  sections
 }
-					const runtime = process.uptime()
-		            const teks = `${kyun(runtime)}`
-					const itsme = `0@s.whatsapp.net`
-					const split = `uwu >//<`
-					const rtimebro = {
-					contextInfo: {
-					participant: itsme,
-					quotedMessage: {
-					extendedTextMessage: {
-				    text: split
-									}
-								}
-							}
-					}
-						    
-						  let prep = generateWAMessageFromContent(m.chat, { orderMessage: { 
-itemCount: -10062007, status: 500,
-surface: 999,
-message: teks,
-description: '^^',
-orderTitle: 'Haii Kak',
-token: '9',
-curreyCode: 'IDR',
-totalCurrencyCode: '>〰<',
-totalAmount1000: '1000000',
-sellerJid: '6285736178354@s.whatsapp.net',
-thumbnail: fs.readFileSync('./thumbnail.jpg')
-}}, {contextInfo: null, quoted: m})
-conn.relayWAMessage(prep)
-				/*	conn.sendMessage(m.chat, `${teks}`, MessageType.text, rtimebro)*/
+
+  try {
+    if (/(runtime)/i.test(command)) {
+      const count = args[1] && args[1].length > 0 ? Math.min(99999999, Math.max(parseInt(args[1]), 1)) : !args[1] || args.length < 3 ? 1 : Math.min(1, count)
+        switch (type) {
+          case 'nomor':
+          conn.reply(m.chat, teksnomor, m, { contextInfo: { mentionedJid: [nowner] }})
+            break
+          default:
+            return await conn.sendMessage(m.chat, listMessage, { quoted: fakes, mentions: await conn.parseMention(teks), contextInfo:{ forwardingScore: 99999, isForwarded: true }})
+        }
+    } else if (/enchant|enchan/i.test(command)) {
+      const count = args[2] && args[2].length > 0 ? Math.min(99999999, Math.max(parseInt(args[2]), 1)) : !args[2] || args.length < 4 ? 1 :Math.min(1, count)
+      switch (_type) {
+        case 't':
+          break
+        case '':
+          break
+
+        default:
+          return conn.sendButton( m.chat, caption, wm, null, [`⋮☰ Menu`, `.menu`], m)
+      }
+    }
+  } catch (err) {
+    m.reply("Error\n\n\n" + err.stack)
+  }
 }
 
 handler.help = ['runtime']
 handler.tags = ['info']
-handler.command = /^(up|run)time$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
-
-handler.admin = false
-handler.botAdmin = false
-
-handler.fail = null
+handler.command = ['runtime', 'rt']
 
 
 export default handler

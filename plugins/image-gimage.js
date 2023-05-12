@@ -1,16 +1,17 @@
 import { googleImage } from '@bochilteam/scraper'
-var handler = async (m, { conn, text, usedPrefix, command }) => {
+let handler = async (m, { conn, text, usedPrefix, command }) => {
     if (!text) throw `Use example ${usedPrefix}${command} Minecraft`
     const res = await googleImage(text)
     let image = res.getRandom()
     let link = image
-    conn.sendFile(m.chat, link, 'google.jpg', `*${htki} ɢᴏᴏɢʟᴇ ɪᴍᴀɢᴇ ${htka}*
+    conn.sendHydrated(m.chat,`
+*${htki} GOOGLE IMAGE ${htka}*
 🔎 *Result:* ${text}
 🌎 *Source:* Google
-`,m)
+`, wm, link, link, '🔗 URL', null, null, [['Next', `.image ${text}`],[null,null],[null,null]],m)
 }
 handler.help = ['gimage <query>', 'image <query>']
-handler.tags = ['internet']
+handler.tags = ['internet', 'tools']
 handler.command = /^(gimage|image)$/i
 
 export default handler

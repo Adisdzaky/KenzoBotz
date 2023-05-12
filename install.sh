@@ -4,5 +4,5 @@ pkg install nodejs -y
 pkg install ffmpeg -y
 pkg install imagemagick -y
 pkg install yarn
-yarn
-node . --server
+npm start
+

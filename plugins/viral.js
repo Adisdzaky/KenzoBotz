@@ -1,15 +1,14 @@
-//By PutraModz Fix buttonmassage \\
+//buatan zyko-md, jgn hapus atuh 😊
 let handler = async (m, { conn, usedPrefix, command }) => {
   await m.reply(`*_ᴛᴜɴɢɢᴜ sᴇʙᴇɴᴛᴀʀ_*`)
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 let name = conn.getName(who)
-  conn.sendButton(m.chat, `Nih *${name}*`, botdate, pickRandom(viral), [['Next', `/viral`],['Viral2', `/viral`],['Viral3', `/viral`]], m)
+  conn.sendButton(m.chat, `Nih *${name}*`, botdate, pickRandom(viral), [['Next', `/viral`]],m)
 }
 handler.help = ['viral']
 handler.command = /^(viral)$/i
 
 handler.premium = true
-handler.group = false
 
 export default handler
 
@@ -33,6 +32,5 @@ const viral = [
       "https://d.top4top.io/m_2344zr3je1.mp4",
       "https://b.top4top.io/m_2344w2x0n1.mp4",
       "https://f.top4top.io/m_23441a9rx1.mp4",
- "https://d.top4top.io/m_234461kmn0.mp4",
-      "https://i.top4top.io/m_2341m8hur1.mp4"
+ "https://d.top4top.io/m_234461kmn0.mp4"
 ]

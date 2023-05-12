@@ -21,8 +21,9 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 		// m.reply(txt.trim())
 	} else throw `Reply audio/video with command ${usedPrefix + command}`
 }
-handler.help = ['whatmusic']
+handler.help = handler.alias = ['whatmusic']
 handler.tags = ['tools']
 handler.command = /^(whatmusic)$/i
 
 export default handler
+

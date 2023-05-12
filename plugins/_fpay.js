@@ -8,6 +8,7 @@ let handler  = async (m, { conn }) => {
   background: thumb
 }}}}, {})
 }
-
+handler.help = ['pay']
+handler.tags = ['nocategory']
 handler.command = /^pay$/i
 export default handler

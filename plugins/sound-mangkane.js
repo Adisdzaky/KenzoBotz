@@ -8,20 +8,20 @@ global.fkontak = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.
 
 //m.reply(`Wait ${command} sedang proses🐦`)
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
+let zykomd = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
 let name = await conn.getName(who)
 
 let stiker = await sticker(null, global.API(`https://telegra.ph/file/d34b2ab2cb233c749776c.png`), global.packname, global.author)
  conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, null, { fileLength: 100, contextInfo: {
           externalAdReply :{
           showAdAttribution: true,
-    mediaUrl: sgc,
-    mediaType: 2,
-    description: 'PutraModz', 
+    mediaUrl: tautanwa,
+    mediaType: tautanwa,
+    description: 'tautanwa', 
     title: `${command} Sedang Di Proses`,
     body: botdate,
-    thumbnail: await(await fetch(pp)).buffer(),
-    sourceUrl: sgc
+    thumbnail: await(await fetch(zykomd)).buffer(),
+    sourceUrl: syt
      }}
   })
   
@@ -31,13 +31,13 @@ await conn.sendFile(m.chat, audio, 'error.mp3', null, fkontak, true, {
 type: 'audioMessage', 
 ptt: false, seconds: 0,contextInfo: {
          externalAdReply: { showAdAttribution: true,
- mediaUrl: 'www.instagram.com/l4c1f2r',
+ mediaUrl: 'www.instagram.com/kabulsaputra21',
     mediaType: 2, 
-    description: 'www.instagram.com/l4c1f2r',
+    description: 'www.instagram.com/kabulsaputra21',
     title: "Now Playing...",
     body: wm,
-    thumbnail: await (await fetch('https://telegra.ph/file/43b370e435af55c71ebbc.jpg')).buffer(),
-    sourceUrl: 'www.instagram.com/l4c1f2r'
+    thumbnail: await (await fetch('https://telegra.ph/file/ad5117fee03548df17ca6.jpg')).buffer(),
+    sourceUrl: 'www.instagram.com/kabulsaputra21'
  	  /*   sourceUrl: sig,
            title: '◄⟬ ●━━━ ⧏ ⧎ ⧐ ━━━● ⟭►',  
             body: 'Now Playing...', 

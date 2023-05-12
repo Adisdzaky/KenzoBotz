@@ -23,8 +23,8 @@ ${v.content}${v.attachments.length > 0 ? `\n*Media Url*: ${v.attachments.join(',
 		}
 	}
 }
-handler.help = ['brainly']
+handler.help = handler.alias = ['brainly']
 handler.tags = ['tools']
 handler.command = /^(brainly)$/i
-
+handler.limit = true
 export default handler
